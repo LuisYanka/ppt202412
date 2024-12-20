@@ -1,0 +1,790 @@
+\documentclass[11pt]{beamer}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usefonttheme{serif}
+\usetheme{Madrid}
+\usepackage{color}
+\usepackage{esint}
+\setbeamertemplate{theorems}[number]
+\newcommand{\Bad}{\operatorname{Bad}}
+
+\newcommand{\al}{\alpha}            
+\newcommand{\lda}{\lambda}
+\newcommand{\om}{\Omega}            
+\newcommand{\pa}{\partial}
+\newcommand{\va}{\varepsilon}       
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\vt}{\vartheta} 
+\newcommand{\be}{\begin{equation}} 
+\newcommand{\ee}{\end{equation}}
+\newcommand{\w}{\omega}      
+\newcommand{\Lda}{\Lambda}    
+
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\cA}{\mathcal{A}}
+
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\bb}{\mathrm{b}}
+\newcommand{\cB}{\mathcal{B}}
+
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\re}{\mathrm{e}}
+
+\newcommand{\fF}{\mathbf{F}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\bG}{\mathbb{G}}
+\newcommand{\fG}{\mathbf{G}}
+\newcommand{\cG}{\mathcal{G}}
+
+\newcommand{\rh}{\mathrm{h}}
+\newcommand{\rH}{\mathrm{H}}
+\newcommand{\bH}{\mathbb{H}}
+
+\newcommand{\I}{\mathbf{I}}  
+\newcommand{\ii}{\mathrm{i}}
+
+\newcommand{\jj}{\mathrm{j}}
+
+\newcommand{\kk}{\mathrm{k}}
+
+\newcommand{\LL}{\mathbf{L}} 
+\newcommand{\cL}{\mathcal{L}} 
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\m}{\mathbf{m}}
+
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\rN}{\mathrm{N}}
+\newcommand{\n}{\mathbf{n}}
+
+\newcommand{\OO}{\mathbb{O}}
+
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\p}{\mathbf{p}}
+
+\newcommand{\Q}{\mathbf{Q}}  
+
+\newcommand{\R}{\mathbb{R}}   
+\newcommand{\RR}{\mathbf{R}}  
+
+\newcommand{\cS}{\mathcal{S}} 
+\newcommand{\Ss}{\mathbb{S}}
+\newcommand{\fS}{\mathbf{S}}
+
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\U}{\mathbf{U}}
+
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\V}{\mathbf{V}}
+
+\newcommand{\W}{\mathbf{W}}
+
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\cX}{\mathcal{X}}
+
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\cY}{\mathcal{Y}}
+
+\newcommand{\wc}{\rightharpoonup}        
+\newcommand{\Sn}{\Ss^n}
+%\newcommand{\D}{\mathcal{D}^{\sg,2}}  
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\FF}{\mathcal{F}}
+
+\newcommand{\vp}{\varphi}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\ep}{\epsilon}
+\newcommand{\sg}{\sigma} 
+\newcommand{\ift}{\infty} 
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\f}{\frac}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\ol}{\overline}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\op}{\operatorname}
+\newcommand{\nn}{\nonumber}
+\newcommand{\na}{\nabla}
+\newcommand{\bs}{\backslash}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\dlim}{\displaystyle\lim}
+\newcommand{\dsup}{\displaystyle\sup}
+\newcommand{\dmin}{\displaystyle\min}
+\newcommand{\dmax}{\displaystyle\max}
+\newcommand{\dinf}{\displaystyle\inf}
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)0le*{3}\end{picture}\ }
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\avg}{avg}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\BMO}{BMO}
+\DeclareMathOperator{\VMO}{VMO}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\pts}{pts}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\Vol}{Vol}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator*{\osc}{osc}
+\DeclareMathOperator{\Length}{Length}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\even}{even}
+\DeclareMathOperator{\odd}{odd}
+\DeclareMathOperator{\sing}{sing}
+\DeclareMathOperator{\reg}{reg}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\loc}{loc}
+\DeclareMathOperator{\argmin}{argmin}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\Center}{Center}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+\def\<{\langle}             \def\>{\rangle}
+\def\({\left(}                 \def\){\right)}
+
+\usepackage{graphics}
+\def\Xint#1{\mathchoice
+  {\XXint\displaystyle\textstyle{#1}}%
+  {\XXint\textstyle\scriptstyle{#1}}%
+  {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+  {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+  \!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+  \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+\usepackage{tikz}
+
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{assum}[thm]{Assumption}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{q}[thm]{Question}
+
+
+
+\title{Semilinear elliptic equation with singular nonlinearity: Regularity and Singularity}
+\author{Wei Wang}
+
+\institute[Peking University] % (optional, but mostly needed)
+{
+  Peking University,
+  School of Mathematical Sciences\\
+}
+
+\date{\today}
+
+\begin{document}\small
+\frame{\titlepage}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\section{Background and Main Results}
+
+\subsection{Backgrounds}
+
+\begin{frame}{Equations and Backgrounds}
+
+The semilinear elliptic equation with \textbf{singular nonlinearity} is given by
+\be
+\Delta u=u^{-p}+f,\,\,u\geq 0\quad\text{in }\om\subset\R^n,\,\,n\geq 2,\,\,p\geq 0,\tag{SN}\label{MEMSeq}
+\ee
+where $ \om $ is a domain and $ f\in L_{\loc}^1(\om) $. \pause
+
+\vspace{1em}
+
+Some mathematical and physical backgrounds are as follows. 
+
+\begin{enumerate}
+\item $ p=0 $: $ \Delta u=\chi_{\{u>0\}} $, obstacle problem, free boundary problem.
+\item $ p>0 $:
+\begin{itemize}
+\item $ p>1 $: Thin film theory.
+\item $ p=2 $: Simplified micro-electromechanical system (MEMS).
+\item $ p=1 $: Singular minimal hypersurfaces with symmetry.
+\end{itemize}
+\end{enumerate}\pause
+
+\vspace{1em}
+
+For $ p=2 $, $ n=1 $ and $ f\equiv 0 $, an easy derivation of the model is the dynamical analysis of two homopolar charges under the Coulomb force.
+
+\end{frame}
+
+\subsection{Problems Setting}
+
+\begin{frame}{Problems Setting: Motivation}
+
+Consider the regularity theory for solutions of \eqref{MEMSeq} with $ p>0 $.
+
+\vspace{1em}
+
+If $ u\in C^0 $ and $ f\in C^{\ift} $, then
+$$
+x\in\{u>0\}\,\,\Ra\,\,\exists r>0,\,\,\text{s.t.}\,\,\inf_{B_r(x)}u>0\,\,\Ra\,\, u\in C^{\ift}(B_r(x)).
+$$
+
+\vspace{1em}\pause
+
+As a result, $ \{u=0\} $ is the \textbf{singular set} of $ u $, and $ \{u>0\} $ is the \textbf{regular set}.
+\vspace{1em}
+
+For the thin film theory, it refers to the \textbf{rupture} phenomenon.\pause
+
+\begin{q}
+How large is the rupture set for a solution of \eqref{MEMSeq} with $ p>0 $? What conditions will we have to obtain such results of rupture sets?
+\end{q}\pause
+
+For $ 0<p<1 $, solutions behave like those for case $ p=0 $. There are almost complete results even for two phases with analogous methods (H. Tavares and S. Terracini, JMPA 2019). Thus, we mainly consider the case $ p>1 $.
+
+\end{frame}
+
+\begin{frame}{Problems Setting: Different Solutions}
+
+For \eqref{MEMSeq} with $ p>1 $, we have the following definitions.
+\begin{enumerate}
+\item\textbf{Weak solution:} $ 0\leq u\in(H_{\loc}^1\cap L_{\loc}^{-p})(\om) $, \eqref{MEMSeq} is satisfied in the sense of distribution.\pause
+\item\textbf{Finite energy solution:} $ 0\leq u\in(C_{\loc}^0\cap H_{\loc}^1\cap L_{\loc}^{1-p})(\om) $, and we have \eqref{MEMSeq} in $ \{u>0\} $, in the sense of distribution.\pause
+\item\textbf{Stationary solution:} weak solution+\textcolor{blue}{stationary condition}, namely, $ \forall Y\in C_0^{\ift}(\om,\R^n) $,
+\be
+\int_{\om}\left[\(\f{|\na u|^2}{2}-\f{u^{1-p}}{p-1}\)\op{div}Y-DY(\na u,\na u)-f(Y\cdot\na u)\right]=0.\label{SC}\tag{SC}
+\ee
+\end{enumerate}\pause
+The \textbf{corresponding functional} of \eqref{MEMSeq} is
+$$
+\cF_f(u,\om):=\int_{\om}\(\f{|\na u|^2}{2}-\f{u^{1-p}}{p-1}+fu\).
+$$
+Then
+$$
+\text{\eqref{SC}}\Leftrightarrow\left.\f{\ud}{\ud t}\right|_{t=0}\cF_f(u(\cdot+tY(\cdot)),\om)=0.
+$$
+
+\end{frame}
+
+
+\begin{frame}{Problems Setting: Present results}
+
+Let $ d_u $ be the \textbf{Hausdorff dimension} of the rupture set $ \{u=0\} $. The following are some results on the estimate of $ d_u $ under different assumptions.\pause
+
+\begin{enumerate}
+\item\textbf{Weak solution:}
+\begin{itemize}
+\item $ d_u\leq n-2+\f{4}{p+2} $ (Jiang-Lin, CAM 2004);
+\item $ d_u\leq n-2+\f{2}{p+1} $ (Dupaigne-Ponce-Porretta, JAM 2006).
+\end{itemize}\pause
+\item\textbf{Finite energy solution:}
+\begin{itemize}
+\item $ d_u\leq n-2+\f{4}{p+1} $ (Guo-Wei, CPAA 2008);
+\item $ d_u\leq n-2+\f{2}{p+1} $ (D\'{a}vila-Ponce, CRMAS 2008).
+\end{itemize}\pause
+\item\textbf{Stationary solution:}
+\begin{itemize}
+\item $ d_u\leq n-2+\f{4}{p+1} $ (Guo-Wei, MM 2006);
+\item $ d_u\leq n-2 $ (D\'{a}vila-Wang-Wei, AIHP 2016).
+\end{itemize}
+\end{enumerate}
+
+
+\end{frame}
+
+\subsection{Stationary Solutions and Main Results}
+
+\begin{frame}{Remarks on Results by D\'{a}vila-Wang-Wei}
+
+\begin{thm}[D\'{a}vila-Wang-Wei, AIHP 2016]
+Assume that $ u\in C_{\loc}^{0,\f{2}{p+1}} $ is a stationary solution of $ \Delta u=u^{-p} $. Then the rupture set $ \{u=0\} $ is a relatively closed set with $ d_u\leq n-2 $. If $ n=2 $, then $ \{u=0\} $ is discrete.
+\end{thm}
+\pause
+Some remarks are as follows.
+
+\begin{enumerate}
+\item The assumption of $ \f{2}{p+1} $-H\"{o}lder continuity is \textbf{optimal} and corresponds to the $ C_{\loc}^{1,1} $ regularity in the obstacle problem.
+\item It is an a priori result. It is still unknown if a stationary solution must be $ \f{2}{p+1} $-H\"{o}lder continuous. \pause
+\item The result is \textbf{sharp}. If $ n=2 $,
+$$
+u(x)=u(|x|):=\(\f{2}{p+1}\)^{-\f{2}{p+1}}|x|^{\f{2}{p+1}}
+$$
+is a stationary solution for $ \Delta u=u^{-p} $ and $ \{u=0\}=\{0\} $. 
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Motivation of Our Works}
+
+\begin{q}
+Can we obtain further information about the stationary solutions of \eqref{MEMSeq}?
+\end{q}
+\pause
+\vspace{1em}
+Before we present the main results, we introduce the concept of rectifiability. Rectifiable sets can be viewed as manifolds for analyst
+
+\vspace{1em}
+\begin{defn}[Rectifiability]
+Let $ N\in\Z_+ $ and $ k\in\Z\cap[1,N] $. We call a set $ M\subset\R^N $ as $ k $-rectifiable if
+$$
+M\subset M_0\cup\bigcup_{i\in\Z_+} f_i(\R^k),
+$$
+where $ \HH^k(M_0)=0 $, and $ f_i:\R^k\to\R^N $ is a Lipschitz map $ \forall i\in\Z_+ $.
+\end{defn}
+
+\end{frame}
+
+\begin{frame}{Main Results}
+
+\begin{thm}[Wang-Zhang, arXiv: 2411.16048]
+$ \f{1}{2}+\f{1}{2p}<\f{q}{n} $. $ u\in C_{\loc}^{0,\f{2}{p+1}}(B_4) $ is a stationary solution of \eqref{MEMSeq} with $ f\in L_{\loc}^q(B_4) $, satisfying $ \|u\|_{L^1(B_2)}+\|f\|_{L^q(B_2)}\leq\Lda $.
+The following properties hold.\pause
+\begin{enumerate}
+\item $ \exists\va,C=\va,C(\Lda,n,p,q)>0 $, s.t.
+$$
+\cL^n(B_r(\{u<\va r^{\f{2}{p+1}}\}\cap B_1))\leq Cr^2,\quad 0<r<1.\pause
+$$
+\item If $ f\in W_{\loc}^{j-1,\ift}(B_4) $ with $ j\in\Z_+ $ and $ \|f\|_{W^{j-1,\ift}(B_2)}\leq\Lda' $, then
+$$
+\sup\left\{\lda>0:\lda^{\f{2(p+1)}{j(p+1)-2}}\cL^n(\{x\in B_1:|D^ju(x)|>\lda\})\right\}\leq C',
+$$
+where $ C'=C'(\Lda,\Lda',j,n,p,q)>0 $.\pause
+\item $ \{u=0\} $ is $ (n-2) $-rectifiable, and for $ n=2 $, $ \{u=0\} $ is a discrete set. 
+\end{enumerate}
+\end{thm}
+
+\end{frame}
+
+\begin{frame}{Some Remarks on Our Results}
+
+\begin{enumerate}
+\item We actually estimate the $ (n-2) $-dimensional Mikowski $ r $-content for $ \{u<\va r^{\f{2}{p+1}}\} $. In particular, $ \dim_{\op{Min}}(\{u=0\}\cap B_1)\leq n-2 $.\pause
+\item The $ L^{\f{2(p+1)}{j(p+1)-2},\ift} $ and $ (n-2) $-rectifiability of $ \{u=0\} $ are both \textbf{sharp}. 
+\item By standard interpolation, 
+$$
+D^ju\in L^{\f{2(p+1)}{j(p+1)-2}-}(B_1),\quad j\in\Z_+,
+$$
+i.e. $ \forall 0<s<\f{2(p+1)}{j(p+1)-2} $, $ \exists C=C(\Lda,\Lda',j,n,p,q,s)>0 $, s.t. 
+$$
+\|D^ju\|_{L^s(B_1)}\leq C. 
+$$ 
+For $ j=1 $, $ u\in W^{1,\f{2(p+1)}{p-1}}(B_1) $, improving the $ H^1 $ regularity.\pause
+\item In fact, any $ k $-stratum of $ \{u=0\} $ is $ k $-rectifiable with $ k\in\Z\cap[0,n-2] $. Here, the stratification is based on the tangent function.
+\end{enumerate}
+
+\end{frame}
+
+
+\section{Difficulties and Sketch of the Proof}
+
+\subsection{Difficulties and Strategies}
+
+\begin{frame}{Terminologies of Harmonic maps}
+
+$ \om\subset\R^n $: bounded domain. $ \cN\hookrightarrow\R^d $ real, smooth, compact manifold, embedded into $ \R^d $. \textbf{Harmonic map}: the critical point of the variational problem
+$$
+\cE(\Phi,\om):=\int_{\om}|\na\Phi|^2,\quad\Phi=(\Phi^1,\Phi^2,...,\Phi^d)\in H^1(\om,\cN).\pause
+$$
+\begin{defn}[Local minimizer]
+$ \Phi\in H^1(\om,\cN) $ is a \textbf{local minimizer} of if $ \forall B_r(x)\subset\subset\om $, and $ \Psi\in H^1(B_r(x),\cN) $ with $ \Phi=\Psi $ on $ \pa B_r(x) $,
+$$
+\cE(\Phi,B_r(x))\leq\cE(\Psi,B_r(x)).
+$$
+\end{defn}\pause
+
+\begin{defn}[Weakly harmonic map]
+$ \Phi\in H^1(\om,\cN) $ is a \textbf{weakly harmonic map} if $ \forall\vp=(\vp^i)_{i=1}^d\in C_0^{\ift}(\om,\R^d) $,
+$$
+\int_{\om}(\na\Phi\cdot\na\vp-A(\Phi)(\na\Phi,\na\Phi)\cdot\vp)=0,
+$$
+where $ A(y)(\cdot,\cdot):T\cN\times T\cN\to(T\cN)^{\perp} $ is the second fundamental form of $ \cN $
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{defn}[Stationary harmonic map]
+$ \Phi\in H^1(\om,\cN) $ is a \textbf{stationary harmonic map} if $ \Phi $ is a weakly harmonic map and satisfies the \textcolor{blue}{stationary condition}
+$$
+\int_{\om}(|\na\Phi|^2\op{div}Y-2DY(\na\Phi,\na\Phi))=0,
+$$
+$ \forall Y\in C_0^{\ift}(\om,\R^n) $.
+\end{defn}\pause
+
+As given previously,
+$$
+\text{Stationary condition }\Leftrightarrow\left.\f{\ud}{\ud t}\right|_{t=0}\cE(\Phi(\cdot+tY(\cdot)),\om)=0.\pause
+$$
+It is obvious that
+$$
+\text{Local minimizer}\,\,\Ra\,\,\text{Stationary harmonic map}\,\,\Ra\,\,\text{Weakly harmonic map}.\pause
+$$
+
+
+
+For a harmonic map $ \Phi\in H^1(\om,\cN) $, the singular set is
+$$
+\sing(\Phi)=\{x\in\om:\forall r>0,\,\,\Phi\text{ is not continuous in }B_r(x)\}.
+$$
+
+\end{frame}
+
+\begin{frame}{Results on $ \sing(\Phi) $ for Harmonic Maps}
+
+\begin{enumerate}
+\item \textbf{Estimates of the Hausdorff dimension:}
+\begin{itemize}
+\item For \textbf{local minimizers}, $ \dim_{\HH}(\sing(\Phi))\leq n-3 $ (R. Schoen and K. Uhlenbeck, JDG 1982);
+\item For \textbf{stationary harmonic maps}, $ \dim_{\HH}(\sing(\Phi))\leq n-2 $ (F. Bethuel, MM 1993).
+\end{itemize}\pause
+\item \textbf{Rectifiability:}
+\begin{itemize}
+\item For \textbf{local minimizers} with real and analytic target manifold $ \cN $, $ \sing(\Phi) $ is $ (n-3) $-rectifiable and the $ k $-stratum is $ k $-rectifiable (L. Simon, CVPDE 1995);
+\item For \textbf{stationary harmonic maps}, the concentration set is $ (n-2) $-rectifiable (F. Lin, AM 1999);
+\item For general smooth $ \cN $ and \textbf{stationary harmonic maps}, $ \sing(\Phi) $ is $ (n-2) $-rectifiable, and the $ k $-stratum is $ k $-rectifiable (A. Naber and D. Valtorta, AM 2017).
+\end{itemize}
+\end{enumerate}
+
+\pause
+
+\textbf{Remark}: The results in (D\'{a}vila-Wang-Wei, AIHP 2016) follows from similar arguments in (Schoen and Uhlenbeck, JDG 1982).
+
+\end{frame}
+
+\begin{frame}{Difficulties in the Proof of Rectifiability}
+
+\begin{assum}[Simplified model]\label{assum1}
+$ u\in C_{\loc}^{0,\f{2}{p+1}} $ is a stationary solution of $ \Delta u=u^{-p} $ in $ B_2 $ with $ p>1 $.
+\end{assum}\pause
+
+\vspace{1em}
+
+For $ B_r(x)\subset B_2 $, the widely used density is
+$$
+\theta(u;x,r):=r^{\f{2(p-1)}{p+1}-n}\int_{B_r(x)}\(\f{|\na u|^2}{2}-\f{u^{1-p}}{p-1}\)-\f{ r^{-\f{4}{p+1}-n}}{p+1}\int_{\pa B_r(x)}u^2.\pause
+$$
+Moreover, it satisfies the \textbf{monotonicity formula}
+$$
+\f{\ud}{\ud r}\theta(u;x,r)=r^{-\f{4}{p+1}-n}\int_{\pa B_r(x)}\left|(y-x)\cdot\na u-\f{2u}{p+1}\right|^2\ud\HH^{n-1}(y)\geq 0.
+$$
+
+$$
+x\in\{u>0\}\,\,\Leftrightarrow\,\,\lim_{r\to 0^+}\theta(u;x,r)=-\ift.
+$$
+
+\centerline{\textbf{$ \theta(u;x,r) $ can be negative!}}\pause
+
+\vspace{1em}
+
+\textcolor{red}{All the previous arguments in harmonic maps require the nonnegativity of the density!}
+
+\end{frame}
+
+\begin{frame}{Blow up analysis I}
+
+\textbf{Classical blow-ups.} (D\'{a}vila-Wang-Wei, AIHP 2016) For $ x\in B_2 $,
+$$
+u_{x,r}(y):=\f{u(x+ry)}{r^{\f{2}{p+1}}}.\pause
+$$
+
+\begin{enumerate}
+\item If $ x\in\{u=0\} $, then $ \exists r_i\to 0^+ $, s.t.
+$$
+u_{x,r_i}\to u_{\ift}\text{ \textcolor{blue}{strongly} in }H_{\loc}^1\cap L_{\loc}^{\ift}\cap L_{\loc}^{-p},
+$$
+where $ \Delta u_{\ift}=u_{\ift}^{-p} $ is a stationary solution. Here we call $ u_{\ift} $ a \textbf{tangent function} of $ u $ at $ x $.\pause
+\item If $ x\in\{u>0\} $, then
+$$
+u_{x,r}\to +\ift\text{ locally and \textcolor{blue}{uniformly}},\,\,r\to 0^+.
+$$
+\end{enumerate}\pause
+
+\centerline{\textcolor{red}{For $ x\in\{u>0\} $, the blow-ups do not have a limit!}}
+\end{frame}
+
+\begin{frame}{Stratification I}
+
+\begin{defn}[$ k $-symmetric function]\label{ksymmetryf}
+$ k\in\Z\cap[0,n] $. $ h\in C_{\loc}^{0,\f{2}{p+1}}(\R^n) $) is $ k $-symmetric at $ x\in\R^n $ wrt $ V\subset\R^n $ with $ \dim V=k $ if $ h $ is $ \f{2}{p+1} $-homogeneous at $ x $ and invariant with respect to $ V $. If $ x=0 $, we call that $ h $ is $ k $-symmetric.\pause
+\end{defn}
+
+\begin{defn}[Stratification I]
+$ \forall k\in\Z\cap[0,n-1] $, define the $ k $-stratum of $ u $ by
+$$
+S_{(\op{I})}^k(u):=\{x\in\{u=0\}:\text{no tangent function }v\text{ of }u\text{ at }x\text{ is }(k+1)\text{-symmetric}\}.
+$$
+As a result,
+$$
+S_{(\op{I})}^0(u)\subset S_{(\op{I})}^1(u)\subset S_{(\op{I})}^2(u)\subset...\subset S_{(\op{I})}^{n-1}(u)=\{u=0\}.
+$$
+\end{defn}\pause
+
+Indeed,
+$$
+S_{(\op{I})}^0(u)\subset S_{(\op{I})}^1(u)\subset S_{(\op{I})}^2(u)\subset...\subset S_{(\op{I})}^{n-2}(u)=S_{(\op{I})}^{n-1}(u)=\{u=0\}.
+$$
+\end{frame}
+
+
+
+\begin{frame}{Rectifiability: Idea}
+
+After (A. Naber and D. Valtorta, AM 2017), in (A. Naber and D. Valtorta, MZ 2018), the same authors developed simplified arguments only requiring the boundedness of the density.
+
+\vspace{1em}
+
+For $ u $ satisfying the assumption of the simplified model,
+$$
+\theta_r(u;x,r)\text{ is locally bounded}.
+$$
+\pause
+
+
+\textbf{Idea:} Restrict the analysis on the rupture set and apply methods by A. Naber and D. Valtorta.
+
+\end{frame}
+
+\begin{frame}{Rectifiability: Modified Densities}
+
+Following (J. Hirsch, S. Stuvard, and D. Valtorta, TAMS 2019), we also modify the density $ \theta_r(u;x,r) $ by
+$$
+\vt(u;x,r)=r^{\f{2(p-1)}{p+1}-n}\int_{\R^n}\(\f{|\na u|^2}{2}-\f{u^{1-p}}{p-1}\)\phi_{x,r}+\f{2r^{-\f{4}{p+1}-n}}{p+1}\int_{\pa B_r(x)}u^2\dot{\phi}_{x,r}.
+$$
+
+\begin{defn}
+Let $ \phi:[0,+\ift)\to[0,+\ift) $.
+\begin{itemize}
+\item $ \supp\phi\subset[0,10) $.
+\item $ \phi(t)\geq 0 $, and $ |\phi'(t)|\leq 100 $, $ \forall t\in[0,+\ift) $.
+\item $ -2\leq\phi'(t)\leq -1 $, $ \forall t\in[0,8] $.
+\end{itemize}
+For $ x\in\R^n $,
+$$
+\phi_{x,r}(y):=\phi\(\f{|y-x|^2}{r^2}\),\quad\dot{\phi}_{x,r}(y):=\phi'\(\f{|y-x|^2}{r^2}\).
+$$
+\end{defn}\pause
+
+Such a modification can avoid the application of \textbf{unique continuation}.
+
+\end{frame}
+
+
+\begin{frame}{Difficulties in the Proof of Regularity Improvement}
+
+To enhance the regularity, we have to obtain.
+$$
+\cL^n(B_r(\textcolor{red}{\{u<\va r^{\f{2}{p+1}}\}}\cap B_1))\leq C\([u]_{C^{0,\f{2}{p+1}}},n,p\)r^2.\pause
+$$
+Indeed, it is easy to obtain
+$$
+\cL^n(B_r(\{u=0\}\cap B_1))\leq C\([u]_{C^{0,\f{2}{p+1}}},n,p\)r^2.\pause
+$$
+
+
+
+\textbf{Difficulty:} The density does not have a uniform bound in $ \{u<\va r^{\f{2}{p+1}}\} $.
+
+\vspace{1em}
+
+For $ u $ and $ B_r(x)\subset\{u>0\} $, we have the \textbf{Nondegeneracy}
+$$
+\sup_{B_r(x)}u\geq C'\([u]_{C^{0,\f{2}{p+1}}},n,p\)r^{\f{2}{p+1}}.
+$$
+Note that we actually need the one with "$ \inf $" replacing "$ \sup $".
+
+\end{frame}
+
+\begin{frame}{Blow up analysis II and Stratification II}
+
+\textbf{Refined blow-ups.} For $ x\in B_2 $, let
+$$
+\wt{u}_{x,r}(y):=\f{u(x+ry)-u(x)}{r^{\f{2}{p+1}}}.\pause
+$$
+\begin{enumerate}
+\item If $ x\in\{u=0\} $, then $ \exists r_i\to 0^+ $, s.t.
+$$
+\wt{u}_{x,r_i}\to u_{\ift}\text{ \textcolor{blue}{strongly} in }H_{\loc}^1\cap L_{\loc}^{\ift}\cap L_{\loc}^{-p},
+$$
+where $ \Delta u_{\ift}=u_{\ift}^{-p} $ is a stationary solution.\pause
+\item If $ x\in\{u>0\} $, then
+$$
+\wt{u}_{x,r}\to 0\text{ \textcolor{blue}{strongly} in }H_{\loc}^1\cap L_{\loc}^{\ift},\,\,r\to 0^+.
+$$
+\end{enumerate}\pause
+
+\begin{defn}[Stratification II]
+$ \forall k\in\Z\cap[0,n-1] $, define the $ k $-stratum of $ u $ by
+$$
+S_{(\op{II})}^k(u):=\{x\in B_2:\text{no tangent function }v\text{ of }u\text{ at }x\text{ is }(k+1)\text{-symmetric}\}.
+$$
+$$
+S_{(\op{II})}^0(u)\subset S_{(\op{II})}^1(u)\subset S_{(\op{II})}^2(u)\subset...\subset S_{(\op{II})}^{n-1}(u)=B_2.
+$$
+\end{defn}
+
+\end{frame}
+
+\begin{frame}{Alternative Results: Intuition}
+
+We will deal with points in $ B_2 $ through an \textbf{alternative method}.\pause
+
+\begin{enumerate}
+\item $ 0\leq u(x)\ll r^{\f{2}{p+1}} $: \\
+The behavior of $ u $ within $ B_r(x) $ is like the case that $ u(x)=0 $. Thus, we apply methods in line with (A. Naber and D. Valtorta, MZ 18).\pause
+\item $ u(x)\gtrsim r^{\f{2}{p+1}} $: \\
+We use the standard regularity theory for elliptic equations to find a small ball $ B_{\delta r}(x) $ with $ \delta\ll 1 $ s.t. $ u $ exhibits nice properties.
+\end{enumerate}
+
+\end{frame}
+
+
+\subsection{Sketch of the Proof}
+
+\begin{frame}{Quantitative Stratification: Definitions}
+
+\begin{defn}[Quantitative symmetry]
+$ \va>0 $, and $ k\in\Z\cap[0,n] $. $ u $ is $ (k,\va) $-symmetric in $ B_r(x)\subset\subset B_2 $, if there is a $ k $-symmetric function $ h\in C_{\loc}^{0,\f{2}{p+1}}(\R^n) $ s.t $
+\|\wt{u}_{x,r}-h\|_{L^{\ift}(B_1)}<\va $.
+\end{defn}\pause
+
+\begin{defn}[Quantitative stratification]\label{defSkvarMEMS}
+$ \va>0 $, $ k\in\Z\cap[0,n-1] $, and $ 0<r<1 $, the $ k $-th $ (\va,r) $-stratification of $ u $, denoted by $ S_{\va,r}^k(u) $, is
+$$
+S_{\va,r}^k(u):=\{x\in B_1:u\text{ is not }(k+1,\va)\text{-symmetric in }B_s(x)\text{ for any }r\leq s<1\}.
+$$
+\end{defn}\pause
+
+In fact,
+$$
+S_{(\op{II})}^k(u)\cap B_1=\bigcup_{\va>0}S_{\va}^k(u)=\bigcup_{\va>0}\bigcap_{0<r<1}S_{\va,r}^k(u).
+$$
+\end{frame}
+
+\begin{frame}{Quantitative Stratification: Main Theorems}
+\begin{thm}[Main]
+$ \va>0 $ and $ k\in\Z\cap[0,n-2] $. Assume that $ [u]_{C^{0,\f{2}{p+1}}(\ol{B}_2)}\leq\Lda $. If $ 0<r<1 $, then
+$$
+\cL^n(B_r(S_{\va,r}^k(u)))\leq C(\va,\Lda,n,p)r^{n-k}.
+$$
+\end{thm}\pause
+
+\begin{enumerate}
+\item This theorem is sharp, giving paralleled results as harmonic maps.\pause
+\item The result implies the Ahlfors regularity of $ S_{\va}^k(u) $ and then the rectifiability.\pause
+\item The proof of
+$$
+\cL^n(B_r(S_{\va,r}^k(u)\cap\{u=0\}))\leq C(\va,\Lda,n,p)r^{n-k}
+$$
+is much easier and enough to obtain the rectifiability of $ S^k(u) $. However, it is not sufficient to obtain the improvement of regularity.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Quantitative Stratification: Lemmas I}
+
+By simple compactness arguments, we have:
+
+\begin{lem}
+$ [u]_{C^{0,\f{2}{p+1}}(\ol{B}_{2})}\leq\Lda $. $ \exists\va=\va(\Lda,n,p)>0 $ s.t. $ \forall 0<r<1 $
+$$
+\{x\in B_1:u(x)<\va r^{\f{2}{p+1}}\}\subset S_{\va,r}^{n-2}(u).
+$$
+\end{lem}\pause
+
+By the estimate of $ S_{\va,r}^k(u) $, this lemma implies that
+\begin{align*}
+\cL^n(\{x\in B_1:u(x)<\va r^{\f{2}{p+1}}\})&\leq \cL^n(B_r(S_{\va,r}^{n-2}(u)))\\
+&\leq C(\va,\Lda,n,p)r^{n-(n-2)}\\
+&\leq C(\va,\Lda,n,p)r^2.
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Quantitative Stratification: Lemma II}
+
+The key step in obtaining our main theorem is the following \textbf{alternative lemma}. The rest of the proof is a simple application of arguments by A. Naber and D. Valtorta.
+
+\begin{lem}\label{kplus1MEMStwoone}
+$ k\in\Z\cap[0,n-2] $, $ 0<s\leq 1 $, and $ x\in\R^n $. $ [u]_{C^{0,\f{2}{p+1}}(\ol{B}_{15s}(x))}\leq\Lda $. $ \forall\va>0 $, there exist $ \delta,\delta'=\delta,\delta'(\va,\Lda,n,p)>0 $ s.t. either
+$$
+\inf_{V\subset\R^n,\,\,\dim V=k+1}\(s^{\f{2(p-1)}{p+1}-n}\int_{B_s(x)}|V\cdot\na u|^2\)<\delta,
+$$
+or there is $ s_x\in[\delta's,s] $ s.t. $ u $ is $ (k+1,\va) $-symmetric in $ B_{s_x}(x) $.
+\end{lem}\pause
+
+\begin{enumerate}
+\item For harmonic maps, the proof is simple.
+\item If we use $ u_{x,r} $ to define quantitative stratification, we cannot obtain such a result without assuming that $ u(x)=0 $.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Quantitative Stratification: Lemma III}
+
+
+
+\begin{lem}\label{kplus1MEMS}
+$ k\in\Z\cap[0,n-2] $, $ 0<r\leq 1 $, and $ x\in\R^n $. $ [u]_{C^{0,\f{2}{p+1}}(\ol{B}_{15r}(x))}\leq\Lda $. $ \forall\va>0 $, there are $ \delta=\delta(\va,\Lda,n,p)>0 $ and $ \ga=\ga(n,p)>0 $ s.t. if
+$$
+\inf_{V\subset\R^n,\,\,\dim V=k+1}\(r^{\f{2(p-1)}{p+1}-n}\int_{B_r(x)}|V\cdot\na u|^2\)<\delta,
+$$
+then either $
+u(x)\geq\delta^{\ga}r^{\f{2}{p+1}} $, or $ \exists r_x\in[\delta^{\ga}r,r] $ s.t. $ u $ is $ (k+1,\va) $-symmetric in $ B_{r_x}(x) $.
+\end{lem}\pause
+
+\begin{enumerate}
+\item The idea of the proof is to first let $ \sg>0 $ and assume that $ u(x)<\sg r^{\f{2}{p+1}} $. By compactness arguments, if $ \sg\ll 1 $, then $ u $ is $ (k+1,\va) $-symmetric.\pause
+\item By this lemma, if $ u(x)\geq\delta^{\ga}r^{\f{2}{p+1}} $, we can use the regularity theory of elliptic equations to obtain that in a smaller ball with radius which is comparable to $ r_x $, $ u $ is $ (k+1,\va) $-symmetric.
+\end{enumerate}
+
+\end{frame}
+
+
+
+\begin{frame}
+\centerline{\Large\textbf{Thank you for listening!}}    
+\end{frame}
+
+
+\end{document}
+
+
